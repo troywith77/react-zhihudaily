@@ -15,7 +15,7 @@ function getList() {
 app.get('/api/topStory', function(req, res) {
 	res.setHeader('Content-Type', 'application/json;charset=utf-8');
 	getList().then(function(data) {
-		res.send(data)
+		res.send(data) //之前返回一个没有内容的对象，是因为返回了一个Promise
 	})
 })
 

@@ -27,7 +27,9 @@ export default class TopStoryList extends React.Component {
 		return (
 			<div>
 				<h3>{this.state.date}</h3>
+				<div>
 				{latestStory}
+				</div>
 			</div>
 		)
 	}
