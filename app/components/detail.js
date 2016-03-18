@@ -1,5 +1,6 @@
 import React from 'react'
 import { getDetail } from '../helpers/api'
+import { convertDetailImageUrl } from '../helpers/utils'
 
 export default class Detail extends React.Component {
 	constructor(props) {
@@ -18,15 +19,15 @@ export default class Detail extends React.Component {
 			})
 		})
 	}
+	escapeHTML() {
+		let content = convertDetailImageUrl(this.state.content)
+		return {__html: content}
+	}
 	render() {
-		let content = this.state.content
-		function escapeHTML() {
-			return {__html: content}
-		}
 		return (
 			<div>
 				<h2>{this.state.title}</h2>
-				<div dangerouslySetInnerHTML={escapeHTML()}></div>
+				<div dangerouslySetInnerHTML={this.escapeHTML()}></div>
 			</div>
 		)
 	}
