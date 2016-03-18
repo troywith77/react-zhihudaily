@@ -1,10 +1,11 @@
 import React from 'react'
+import { propTypes } from 'react'
 import { getLatestStory } from '../helpers/api'
 import ListItem from '../components/listItem'
 
 export default class TopStoryList extends React.Component {
-	constructor(props) {
-		super(props)
+	constructor(props, context) {
+		super(props, context)
 		this.state = {
 			date: null,
 			latestStory: []
@@ -18,10 +19,14 @@ export default class TopStoryList extends React.Component {
 			})
 		})
 	}
+	handleClick(e) {
+		console.log(e)
+		this.context.router.push('/detail/' + e)
+	}
 	render() {
 		let latestStory = this.state.latestStory.map((story, id) => {
 			return (
-				<ListItem key={id} story={story} />
+				<ListItem key={id} story={story} handleClick={this.handleClick.bind(this)} />
 			)
 		})
 		return (
@@ -33,4 +38,8 @@ export default class TopStoryList extends React.Component {
 			</div>
 		)
 	}
+}
+
+TopStoryList.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
