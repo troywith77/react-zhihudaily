@@ -6,23 +6,26 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-const AppBarExampleIconMenu = () => (
-  <AppBar
-    title="知乎日报"
-    iconElementLeft={<IconButton><ArrowBack /></IconButton>}
-    iconElementRight={
-      <IconMenu
-        iconButtonElement={
-          <IconButton><MoreVertIcon /></IconButton>
-        }
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-        <MenuItem primaryText="Refresh" />
-        <MenuItem primaryText="Help" />
-        <MenuItem primaryText="Sign out" />
-      </IconMenu>
-    }/>
-);
+class AppBarIconMenu extends React.Component {
+  render() {
+  	return (
+	  <AppBar
+	    title="知乎日报"
+	    iconElementLeft={<IconButton onClick={this.props.handleClick}><ArrowBack /></IconButton>}
+	    iconElementRight={
+	      <IconMenu
+	        iconButtonElement={
+	          <IconButton><MoreVertIcon /></IconButton>
+	        }
+	        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+	        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
+	        <MenuItem primaryText="Refresh" />
+	        <MenuItem primaryText="Help" />
+	      </IconMenu>
+	    }/>
+	)
+  }
+}
 
 export default class Header extends React.Component {
 	constructor(context) {
@@ -40,7 +43,7 @@ export default class Header extends React.Component {
 	render() {
 		return (
 				<header>
-					<AppBarExampleIconMenu />
+					<AppBarIconMenu handleClick={this.handleClickBtn.bind(this)} />
 				</header>
 		)
 	}

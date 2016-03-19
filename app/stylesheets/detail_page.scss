@@ -1,6 +1,10 @@
 .detail-container {
-	max-width: 700px;
+	max-width: 640px;
 	margin: 0 auto;
+	font: 16px 'Open Sans', 'Helvetica Neue', 'Helvetica', simsun, 'Arial', 'Microsoft Yahei', sans-serif;
+	* {
+		line-height: 1.6;
+	}
 	img {
 		max-width: 100%;
 		height: auto;

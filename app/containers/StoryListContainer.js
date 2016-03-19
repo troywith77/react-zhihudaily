@@ -5,9 +5,15 @@ import { reachBottom } from '../helpers/utils'
 import StoryListItem from '../components/listItem'
 import moment from 'moment'
 
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
+import Divider from 'material-ui/lib/divider';
+import Colors from 'material-ui/lib/styles/colors';
+import CircularProgress from 'material-ui/lib/circular-progress';
+
 const styles = {
 	container: {
-		maxWidth: '700px',
+		maxWidth: '640px',
 		margin: '0 auto',
 	}
 }
@@ -54,7 +60,7 @@ export default class StoryListContainer extends React.Component {
     	}
 	}
 	renderLoading() {
-		return this.state.isLoading ? <p style={{textAlign: 'center',margin: '50px 0'}}>Loading...</p> : ''
+		return this.state.isLoading ? <CircularProgress style={{textAlign: 'center',margin: '50px auto', display: 'block'}} /> : ''
 	}
 	render() {
 		let Stories = this.state.Stories.map((story, id) => {
@@ -62,11 +68,12 @@ export default class StoryListContainer extends React.Component {
 				<StoryListItem key={id} story={story} handleClick={this.handleClick.bind(this)} />
 			)
 		})
+					// {Stories}
 		return (
 			<div onScroll={this.handleScroll.bind(this)} style={styles.container}>
-				<div>
-					{Stories}
-				</div>
+  				<List subheader="Today">
+  					{Stories}
+  				</List>
 				{this.renderLoading()}
 			</div>
 		)
@@ -76,3 +83,4 @@ export default class StoryListContainer extends React.Component {
 StoryListContainer.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
+
