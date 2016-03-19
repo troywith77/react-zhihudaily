@@ -1,14 +1,15 @@
 import React from 'react'
 import Detail from '../components/detail'
 import { getDetail } from '../helpers/api'
-import { convertDetailImageUrl } from '../helpers/utils'
+import { convertImageUrl, convertDetailImageUrl } from '../helpers/utils'
 
 export default class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			content: '',
-			title: ''
+			title: '',
+			bgUrl: ''
 		}
 	}
 	componentDidMount() {
@@ -16,7 +17,8 @@ export default class DetailContainer extends React.Component {
 			console.log(data)
 			this.setState({
 				title: data.data.title,
-				content: data.data.body
+				content: data.data.body,
+				bgUrl: data.data.image
 			})
 		})
 	}
@@ -27,7 +29,8 @@ export default class DetailContainer extends React.Component {
 	render() {
 		return (
 			<Detail title={this.state.title}
-			HTMLContent={this.escapeHTML()} />
+			HTMLContent={this.escapeHTML()}
+			bgUrl={convertImageUrl(this.state.bgUrl)} />
 		)
 	}
 }

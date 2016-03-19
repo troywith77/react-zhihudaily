@@ -1,12 +1,12 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import HeaderContainer from '../containers/HeaderContainer'
+import MainContainer from '../containers/MainContainer'
 import StoryListContainer from '../containers/StoryListContainer'
 import DetailContainer from '../containers/DetailContainer'
 
 const route = (
 	<Router history={browserHistory}>
-		<Route path='/' component={HeaderContainer}>
+		<Route path='/' component={MainContainer}>
 			<IndexRoute component={StoryListContainer} />
 			<Route path='detail/:id' component={DetailContainer} />
 		</Route>

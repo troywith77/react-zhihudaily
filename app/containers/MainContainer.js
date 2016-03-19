@@ -1,7 +1,15 @@
 import React from 'react'
 import Header from '../components/header'
 
-export default class HeaderContainer extends React.Component {
+export default class MainContainer extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			currentRoute: ''
+		}
+	}
+	componentDidMount() {
+	}
 	render() {
 		return (
 			<div>

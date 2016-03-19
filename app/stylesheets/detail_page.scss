@@ -1,0 +1,43 @@
+.detail-container {
+	max-width: 700px;
+	margin: 0 auto;
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 2px;
+	}
+	.avatar {
+		display: inline-block;
+		border-radius: 50%;
+		margin: 0;
+		margin-right: 20px;
+	}
+	.answer .meta {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	h2 {
+		padding: 0 15px;
+		margin-bottom: 0;
+		font-size: 18px;
+	}
+	.main-wrap {
+		padding: 15px;
+		h2 {
+			margin: 0 auto 20px;
+			padding: 0;
+		}
+		ul {
+			padding: 0 15px;
+		}
+		blockquote {
+			border-left: 3px solid #eee;
+			padding: 0 15px;
+			margin: 15px;
+		}
+	}
+}

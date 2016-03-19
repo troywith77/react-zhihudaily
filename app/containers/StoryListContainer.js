@@ -2,14 +2,20 @@ import React from 'react'
 import { propTypes } from 'react'
 import { getLatestStory, getHistoryStory } from '../helpers/api'
 import { reachBottom } from '../helpers/utils'
-import ListItem from '../components/listItem'
+import StoryListItem from '../components/listItem'
 import moment from 'moment'
+
+const styles = {
+	container: {
+		maxWidth: '700px',
+		margin: '0 auto',
+	}
+}
 
 export default class StoryListContainer extends React.Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
-			date: null,
 			isLoading: true,
 			Stories: [],
 			LoadingDate: moment().subtract(-1, 'days').format('YYYYMMDD')
@@ -20,7 +26,6 @@ export default class StoryListContainer extends React.Component {
 	componentDidMount() {
 		getLatestStory().then((data) => {
 			this.setState({
-				date: data.data.date,
 				isLoading: false,
 				Stories: data.data.stories
 			})
@@ -34,12 +39,12 @@ export default class StoryListContainer extends React.Component {
 		this.context.router.push('/detail/' + id)
 	}
 	handleScroll() {
-		console.log(moment().format('YYYYMMDD'))
 		if(reachBottom()) {
+			console.log('bottom')
 			this.setState({
+				isLoading: true,
 				LoadingDate: moment(this.state.LoadingDate).subtract(1, 'days').format('YYYYMMDD')
 			})
-			console.log(this.state.LoadingDate)
 			getHistoryStory(this.state.LoadingDate).then((data) => {
 				console.log(data)
 				this.setState({
@@ -49,17 +54,16 @@ export default class StoryListContainer extends React.Component {
     	}
 	}
 	renderLoading() {
-		return this.state.isLoading ? <p>Loading...</p> : ''
+		return this.state.isLoading ? <p style={{textAlign: 'center',margin: '50px 0'}}>Loading...</p> : ''
 	}
 	render() {
 		let Stories = this.state.Stories.map((story, id) => {
 			return (
-				<ListItem key={id} story={story} handleClick={this.handleClick.bind(this)} />
+				<StoryListItem key={id} story={story} handleClick={this.handleClick.bind(this)} />
 			)
 		})
 		return (
-			<div onScroll={this.handleScroll.bind(this)}>
-				<h3>{this.state.date}</h3>
+			<div onScroll={this.handleScroll.bind(this)} style={styles.container}>
 				<div>
 					{Stories}
 				</div>

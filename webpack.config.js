@@ -1,20 +1,23 @@
 var path = require('path');
 
 module.exports = {
-	entry: './app/index.js',
+	entry: [
+    'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+    './app/index.js',
+  ],
 	output: {
 		path: path.join(__dirname, 'public/'),
 		filename: 'bundle.js'
 	},
 	module: {
 		loaders: [
-			{test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', query: {presets: ['react', 'es2015']}},
+			{test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']},
 			{test: /.scss$/, exclude: /node_modules/, loader: 'style!css!sass'}
 		]
 	},
 	// proxy
 	devServer: {
-    // every request made to 'locahost:8080/api/xxxx' will be proxyfied to 'http://localhost:7000/api/xxxx'
     proxy: {
       "/api/*": {
         target: "http://localhost:3000",
