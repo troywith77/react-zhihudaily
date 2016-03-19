@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
-    "prod" : "webpack -p && node server",
+    "prod": "webpack -p && node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -32,6 +32,7 @@
   "dependencies": {
     "jquery": "^2.2.2",
     "material-ui": "^0.15.0-alpha.1",
+    "moment": "^2.12.0",
     "react-tap-event-plugin": "^0.2.2"
   }
 }

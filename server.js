@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //api start
 
+//最新消息
 function getList() {
 	return axios.get('http://news-at.zhihu.com/api/4/news/latest').then(function(data) {
 		return data
@@ -22,6 +23,21 @@ app.get('/api/topStory', function(req, res) {
 	})
 })
 
+//过往消息，传日期
+function getHistoryStory(date) {
+	return axios.get('http://news.at.zhihu.com/api/4/news/before/' + date).then(function(data) {
+		return data
+	})
+}
+
+app.get('/api/history/*', function(req, res) {
+	res.setHeader('Content-Type', 'application/json;charset=utf-8');
+	getHistoryStory(req.query.date).then(function(data) {
+		res.send(data)
+	})
+})
+
+//详情
 function getDetail(id) {
 	return axios.get('http://news-at.zhihu.com/api/4/news/' + id).then(function(data) {
 		return data

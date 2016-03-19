@@ -7,6 +7,16 @@ export function getLatestStory() {
 	})
 }
 
+export function getHistoryStory(date) {
+	return axios({
+		url: '/api/history/',
+		method: 'GET',
+		params: {date: date}
+	}).then(function(data) {
+		return data.data
+	})
+}
+
 export function getDetail(id) {
 	return axios({
 		method: 'GET',

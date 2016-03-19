@@ -14,9 +14,10 @@ export default class ListItem extends React.Component {
 	}
 	render() {
 		let story = this.props.story;
+		let imageUrl = story.images ? convertImageUrl(story.images[0]) : ''
 		return (
 			<figure style={styles.container} onClick={this.props.handleClick.bind(null, story.id)}>
-				<image src={convertImageUrl(story.images[0])} />
+				<image src={imageUrl} />
 				<figcaption>{story.title}</figcaption>
 			</figure>
 		)

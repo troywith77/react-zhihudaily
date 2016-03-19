@@ -1,14 +1,14 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import Header from '../components/header.js'
-import TopStoryList from '../components/topStoryList'
-import Detail from '../components/detail'
+import HeaderContainer from '../containers/HeaderContainer'
+import StoryListContainer from '../containers/StoryListContainer'
+import DetailContainer from '../containers/DetailContainer'
 
 const route = (
 	<Router history={browserHistory}>
-		<Route path='/' component={Header}>
-			<IndexRoute component={TopStoryList} />
-			<Route path='detail/:id' component={Detail} />
+		<Route path='/' component={HeaderContainer}>
+			<IndexRoute component={StoryListContainer} />
+			<Route path='detail/:id' component={DetailContainer} />
 		</Route>
 	</Router>
 )
