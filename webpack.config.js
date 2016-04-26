@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
 	entry: './app/index.js',
@@ -21,10 +22,6 @@ module.exports = {
         rewrite: function(req, options) {
           //you can handle rewrite here if you need to
         }
-      },
-      'http://pic1.zhimg.com/*': {
-      	target: "https://images.weserv.nl/?url=pic4.zhimg.com",
-        secure: false,
       }
     }
   },

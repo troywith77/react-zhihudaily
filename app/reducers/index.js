@@ -1,4 +1,3 @@
-import { getLatestStory, getHistoryStory } from '../helpers/api'
 import moment from 'moment'
 
 const mainList = (state = [], action) => {
@@ -28,10 +27,8 @@ const UIState = (state = initialUIState, action) => {
 				isLoading: false
 			})
 		case 'DECREMENT_DATE':
-			console.log(111111)
-			const date = moment(state.LoadingDate).subtract(1, 'days').format('YYYYMMDD')
 			return Object.assign(state, {
-				LoadingDate: date
+				LoadingDate: moment(state.LoadingDate).subtract(1, 'days').format('YYYYMMDD')
 			})
 		default:
 			return state;

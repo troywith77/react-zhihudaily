@@ -26,11 +26,7 @@ const styles = {
 class StoryListContainer extends React.Component {
 	constructor(props, context) {
 		super(props, context)
-		this.state = {
-			isLoading: true,
-			Stories: this.props.mainList || [],
-			LoadingDate: moment().format('YYYYMMDD')
-		}
+
 		this.handleScrollEvent = this.handleScroll.bind(this); //bind(this) !important
 		//创建一个变量来保存handler，否则就不能正确的移除，因为每次bind都会产生一个新对象，具体见：https://gist.github.com/Restuta/e400a555ba24daa396cc
 	}
@@ -39,12 +35,7 @@ class StoryListContainer extends React.Component {
 		actions.GET_LATEST_DATA()
 
 		//首次加载时除了最新的还加载昨天的，因为高度不够无法触发到底部刷新加载历史内容
-		getHistoryStory(this.state.LoadingDate).then((data) => {
-			this.setState({
-				isLoading: false,
-				Stories: this.state.Stories.concat(data.data.stories)
-			})
-		})
+
 		window.addEventListener('scroll', this.handleScrollEvent);
 	}
 	componentWillUnmount() {
@@ -56,7 +47,6 @@ class StoryListContainer extends React.Component {
 	handleScroll() {
 		const { actions, UIState } = this.props
 		if(reachBottom()) {
-			console.log(111)
 			actions.START_LOADING()
 			actions.DECREMENT_DATE()
 			actions.GET_HISTORY_DATA(UIState.LoadingDate)

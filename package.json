@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --hot --content-base public/ --history-api-fallback",
-    "prod": "webpack -p && node server",
+    "prod": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors && node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
