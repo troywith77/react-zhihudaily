@@ -6,13 +6,14 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
-class AppBarIconMenu extends React.Component {
-  render() {
+const AppBarIconMenu = ({
+	handleClick
+}) => {
   	return (
 	  <AppBar
 	    title="知乎日报"
 	    style={{position: 'fixed'}}
-	    iconElementLeft={<IconButton onClick={this.props.handleClick}><ArrowBack /></IconButton>}
+	    iconElementLeft={<IconButton onClick={handleClick}><ArrowBack /></IconButton>}
 	    iconElementRight={
 	      <IconMenu
 	        iconButtonElement={
@@ -25,28 +26,22 @@ class AppBarIconMenu extends React.Component {
 	      </IconMenu>
 	    }/>
 	)
-  }
 }
 
 export default class Header extends React.Component {
 	constructor(context) {
 		super(context)
-		this.state = {
-			page: '知乎日报'
-		}
+		this.handleClickBtn = this.handleClickBtn.bind(this)
 	}
 	handleClickBtn() {
 		this.context.router.goBack()
-	}
-	handleTouchTap() {
-		console.log('touch')
 	}
 	render() {
 		return (
 				<header>
 					<AppBarIconMenu
 					style={{position: 'fixed'}}
-					handleClick={this.handleClickBtn.bind(this)}
+					handleClick={this.handleClickBtn}
 					/>
 				</header>
 		)

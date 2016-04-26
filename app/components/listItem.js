@@ -13,45 +13,19 @@ const styles = {
 	}
 }
 
-// export default class ListItem extends React.Component {
-// 	constructor(props) {
-// 		super(props)
-// 	}
-// 	render() {
-// 		let story = this.props.story;
-// 		let imageUrl = story.images ? convertImageUrl(story.images[0]) : ''
-// 		return (
-// 			<figure style={styles.container} onClick={this.props.handleClick.bind(null, story.id)}>
-// 				<image src={imageUrl} />
-// 				<figcaption>{story.title}</figcaption>
-// 			</figure>
-// 		)
-// 	}
-// }
-
-export default class StoryListItem extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-	render() {
-		let story = this.props.story;
-		let imageUrl = story.images ? convertImageUrl(story.images[0]) : ''
-		return (
-			<div onClick={this.props.handleClick.bind(null, story.id)}>
-				<ListItem
-			      leftAvatar={<Avatar src={imageUrl} />}
-			      primaryText={story.title} />
-			    <Divider inset={true} />
-			</div>
-		)
-	}
+const StoryListItem = ({
+	story,
+	onClick
+}) => {
+	const imageUrl = story.images ? convertImageUrl(story.images[0]) : ''
+	return (
+		<div onClick={onClick.bind(null, story.id)}>
+			<ListItem
+		      leftAvatar={<Avatar src={imageUrl} />}
+		      primaryText={story.title} />
+		    <Divider inset={true} />
+		</div>
+	)
 }
 
-const ListMessages = (props) => (
-	<div>
-	    <ListItem
-	      leftAvatar={<Avatar src={props.avatar} />}
-	      primaryText={props.title} />
-	    <Divider inset={true} />
-	</div>
-);
+export default StoryListItem

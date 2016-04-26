@@ -27,14 +27,15 @@ class StoryListContainer extends React.Component {
 	constructor(props, context) {
 		super(props, context)
 
+		this.handleClick = this.handleClick.bind(this)
 		this.handleScrollEvent = this.handleScroll.bind(this); //bind(this) !important
-		//创建一个变量来保存handler，否则就不能正确的移除，因为每次bind都会产生一个新对象，具体见：https://gist.github.com/Restuta/e400a555ba24daa396cc
+		/*
+		  创建一个变量来保存handler，否则就不能正确的移除，因为每次bind都会产生一个新对象，
+		  具体见：https://gist.github.com/Restuta/e400a555ba24daa396cc
+		*/
 	}
 	componentDidMount() {
-		const { actions } = this.props
-		actions.GET_LATEST_DATA()
-
-		//首次加载时除了最新的还加载昨天的，因为高度不够无法触发到底部刷新加载历史内容
+		this.props.actions.GET_LATEST_DATA()
 
 		window.addEventListener('scroll', this.handleScrollEvent);
 	}
@@ -60,7 +61,7 @@ class StoryListContainer extends React.Component {
 	render() {
 		let Stories = this.props.mainList.map((story, id) => {
 			return (
-				<StoryListItem key={id} story={story} handleClick={this.handleClick.bind(this)} />
+				<StoryListItem key={id} story={story} onClick={this.handleClick} />
 			)
 		})
 		return (

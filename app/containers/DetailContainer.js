@@ -3,33 +3,52 @@ import Detail from '../components/detail'
 import { getDetail } from '../helpers/api'
 import { convertImageUrl, convertDetailImageUrl } from '../helpers/utils'
 
-export default class DetailContainer extends React.Component {
+import CircularProgress from 'material-ui/lib/circular-progress';
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as Actions from '../actions'
+
+class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			content: '',
-			title: '',
-			bgUrl: ''
-		}
 	}
 	componentDidMount() {
-		getDetail(this.props.params.id).then((data) => {
-			this.setState({
-				title: data.data.title,
-				content: data.data.body,
-				bgUrl: data.data.image
-			})
-		})
+		this.props.actions.GET_DETAIL_DATA(this.props.params.id)
+	}
+	componentWillUnmount() {
+		this.props.actions.EMPTY_DETAIL()
 	}
 	escapeHTML() {
-		let content = convertDetailImageUrl(this.state.content)
+		let content = convertDetailImageUrl(this.props.detail.data ? this.props.detail.data.body : '')
 		return {__html: content}
 	}
 	render() {
-		return (
-			<Detail title={this.state.title}
+		const { detail } = this.props
+		return !detail.data ?
+		(<div></div>)
+		:
+		(
+			<Detail title={detail.data.title}
 			HTMLContent={this.escapeHTML()}
-			bgUrl={convertImageUrl(this.state.bgUrl)} />
+			bgUrl={convertImageUrl(detail.data.image)} />
 		)
 	}
 }
+
+const mapStateToProps = (state) => {
+	return {
+		detail: state.detail
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators(Actions, dispatch)
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(DetailContainer)

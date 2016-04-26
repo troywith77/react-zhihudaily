@@ -12,6 +12,19 @@ const mainList = (state = [], action) => {
 	}
 }
 
+const detail = (state = {}, action) => {
+	switch(action.type) {
+		case 'GET_DETAIL':
+			return Object.assign({},
+				state,
+				action.data);
+		case 'EMPTY_DETAIL':
+			return {}
+		default:
+			return state;
+	}
+}
+
 const initialUIState = {
 	LoadingDate: moment().format('YYYYMMDD'),
 	isLoading: true
@@ -35,4 +48,4 @@ const UIState = (state = initialUIState, action) => {
 	}
 }
 
-export { mainList, UIState }
+export { mainList, detail, UIState }

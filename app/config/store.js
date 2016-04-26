@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import {  mainList ,UIState } from '../reducers/'
+import {  mainList , detail, UIState } from '../reducers/'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
 	mainList,
+	detail,
 	UIState
 })
 
