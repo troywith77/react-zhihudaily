@@ -1,6 +1,7 @@
 .detail-container {
 	max-width: 640px;
 	margin: 0 auto;
+	padding-top: 64px;
 	font: 16px 'Open Sans', 'Helvetica Neue', 'Helvetica', simsun, 'Arial', 'Microsoft Yahei', sans-serif;
 	* {
 		line-height: 1.6;
@@ -43,5 +44,14 @@
 			padding: 0 15px;
 			margin: 15px;
 		}
+	}
+	a,
+	a:link,
+	a:focus {
+		color: #00bcd4;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #00abc3;
 	}
 }

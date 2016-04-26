@@ -11,6 +11,7 @@ class AppBarIconMenu extends React.Component {
   	return (
 	  <AppBar
 	    title="知乎日报"
+	    style={{position: 'fixed'}}
 	    iconElementLeft={<IconButton onClick={this.props.handleClick}><ArrowBack /></IconButton>}
 	    iconElementRight={
 	      <IconMenu
@@ -43,7 +44,10 @@ export default class Header extends React.Component {
 	render() {
 		return (
 				<header>
-					<AppBarIconMenu handleClick={this.handleClickBtn.bind(this)} />
+					<AppBarIconMenu
+					style={{position: 'fixed'}}
+					handleClick={this.handleClickBtn.bind(this)}
+					/>
 				</header>
 		)
 	}

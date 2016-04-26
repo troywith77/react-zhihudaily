@@ -1,9 +1,21 @@
 # React Zhihu Daily
 
+```
+git clone
+cd
+
+//DEV
+node server  //api request
+npm start
+
+//PROD
+npm run prod
+```
+
 ## ScreenShots
 
-![1](/screenshots/Screen-Shot-2016-03-20-at-10.47.49-AM.png)
+![1](./screenshots/1.png)
 
-![2](/screenshots/Screen-Shot-2016-03-20-at-10.50.14-AM.png)
+![2](./screenshots/2.png)
 
-![3](/screenshots/Screen-Shot-2016-03-20-at-10.51.19-AM.png)
+![3](./screenshots/3.png)

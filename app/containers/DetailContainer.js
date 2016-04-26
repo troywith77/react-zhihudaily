@@ -14,7 +14,6 @@ export default class DetailContainer extends React.Component {
 	}
 	componentDidMount() {
 		getDetail(this.props.params.id).then((data) => {
-			console.log(data)
 			this.setState({
 				title: data.data.title,
 				content: data.data.body,
