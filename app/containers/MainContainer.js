@@ -14,6 +14,7 @@ export default class MainContainer extends React.Component {
 		return (
 			<div>
 				<Header />
+
 				{this.props.children}
 			</div>
 		)

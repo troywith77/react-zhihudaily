@@ -27,21 +27,30 @@ const detail = (state = {}, action) => {
 
 const initialUIState = {
 	LoadingDate: moment().format('YYYYMMDD'),
-	isLoading: true
+	isLoading: true,
+	isDialogOpen: false
 }
 const UIState = (state = initialUIState, action) => {
 	switch (action.type) {
 		case 'START_LOADING':
-			return Object.assign(state, {
+			return Object.assign({}, state, {
 				isLoading: true
 			})
 		case 'STOP_LOADING':
-			return Object.assign(state, {
+			return Object.assign({}, state, {
 				isLoading: false
 			})
 		case 'DECREMENT_DATE':
-			return Object.assign(state, {
+			return Object.assign({}, state, {
 				LoadingDate: moment(state.LoadingDate).subtract(1, 'days').format('YYYYMMDD')
+			})
+		case 'OPEN_ABOUT_DIALOG':
+			return Object.assign({}, state, {
+				isDialogOpen: true
+			})
+		case 'CLOSE_ABOUT_DIALOG':
+			return Object.assign({}, state, {
+				isDialogOpen: false
 			})
 		default:
 			return state;

@@ -75,3 +75,15 @@ export const DECREMENT_DATE = () => {
 		type: 'DECREMENT_DATE'
 	}
 }
+
+export const OPEN_ABOUT_DIALOG = () => {
+	return {
+		type: 'OPEN_ABOUT_DIALOG'
+	}
+}
+
+export const CLOSE_ABOUT_DIALOG = () => {
+	return {
+		type: 'CLOSE_ABOUT_DIALOG'
+	}
+}

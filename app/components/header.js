@@ -6,8 +6,15 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
+import AboutDialog from '../components/AboutDialog'
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as Actions from '../actions/'
+
 const AppBarIconMenu = ({
-	handleClick
+	handleClick,
+	OPEN_ABOUT_DIALOG
 }) => {
   	return (
 	  <AppBar
@@ -21,16 +28,15 @@ const AppBarIconMenu = ({
 	        }
 	        targetOrigin={{horizontal: 'right', vertical: 'top'}}
 	        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-	        <MenuItem primaryText="Refresh" />
-	        <MenuItem primaryText="Help" />
+	        <MenuItem primaryText="About" onTouchTap={OPEN_ABOUT_DIALOG} />
 	      </IconMenu>
 	    }/>
 	)
 }
 
-export default class Header extends React.Component {
-	constructor(context) {
-		super(context)
+class Header extends React.Component {
+	constructor(props, context) {
+		super(props, context)
 		this.handleClickBtn = this.handleClickBtn.bind(this)
 	}
 	handleClickBtn() {
@@ -38,12 +44,18 @@ export default class Header extends React.Component {
 	}
 	render() {
 		return (
-				<header>
-					<AppBarIconMenu
+			<header>
+				<AppBarIconMenu
 					style={{position: 'fixed'}}
 					handleClick={this.handleClickBtn}
-					/>
-				</header>
+					{...this.props.actions}
+				/>
+
+				<AboutDialog
+					open={this.props.UIState.isDialogOpen}
+					{...this.props.actions}
+				/>
+			</header>
 		)
 	}
 }
@@ -51,3 +63,20 @@ export default class Header extends React.Component {
 Header.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
+
+const mapStateToProps = (state) => {
+	return {
+		UIState: state.UIState
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators(Actions, dispatch)
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Header)
