@@ -5,11 +5,11 @@ import { reachBottom } from '../helpers/utils'
 import StoryListItem from '../components/listItem'
 import moment from 'moment'
 
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
-import Divider from 'material-ui/lib/divider';
-import Colors from 'material-ui/lib/styles/colors';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import CircularProgress from 'material-ui/CircularProgress';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -34,6 +34,9 @@ class StoryListContainer extends React.Component {
 		  具体见：https://gist.github.com/Restuta/e400a555ba24daa396cc
 		*/
 	}
+	getChildContext() {
+        return { muiTheme: getMuiTheme(baseTheme) };
+    }
 	componentDidMount() {
 		this.props.actions.GET_LATEST_DATA()
 
@@ -49,7 +52,6 @@ class StoryListContainer extends React.Component {
 		const { actions, UIState } = this.props
 		if(reachBottom()) {
 			actions.START_LOADING()
-			actions.DECREMENT_DATE()
 			actions.GET_HISTORY_DATA(UIState.LoadingDate)
     	}
 	}
@@ -66,7 +68,7 @@ class StoryListContainer extends React.Component {
 		})
 		return (
 			<div onScroll={this.handleScroll.bind(this)} style={styles.container}>
-  				<List subheader="Today">
+  				<List>
   					{Stories}
   				</List>
 				{this.renderLoading()}
@@ -74,6 +76,10 @@ class StoryListContainer extends React.Component {
 		)
 	}
 }
+
+StoryListContainer.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
+};
 
 const mapStateToProps = ( state ) => {
 	return {

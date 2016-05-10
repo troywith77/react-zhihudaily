@@ -3,7 +3,7 @@ import Detail from '../components/detail'
 import { getDetail } from '../helpers/api'
 import { convertImageUrl, convertDetailImageUrl } from '../helpers/utils'
 
-import CircularProgress from 'material-ui/lib/circular-progress';
+import CircularProgress from 'material-ui/CircularProgress';
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

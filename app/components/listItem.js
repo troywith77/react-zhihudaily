@@ -1,10 +1,10 @@
 import React from 'react'
 import { convertImageUrl } from '../helpers/utils'
 
-import ListItem from 'material-ui/lib/lists/list-item';
-import Divider from 'material-ui/lib/divider';
-import Avatar from 'material-ui/lib/avatar';
-import Colors from 'material-ui/lib/styles/colors';
+import { ListItem } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Avatar from 'material-ui/Avatar';
+import Colors from 'material-ui/styles/colors';
 
 const styles = {
 	container: {

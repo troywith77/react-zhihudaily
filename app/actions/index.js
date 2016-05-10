@@ -17,6 +17,7 @@ export const GET_LATEST_DATA = () => {
 export const GET_HISTORY_DATA = (date) => {
 	return (dispatch, getStore) => {
 		getHistoryStory(date).then(data => {
+			dispatch(DECREMENT_DATE())
 			dispatch(GET_HISTORY(data.data))
 			dispatch(STOP_LOADING())
 		})

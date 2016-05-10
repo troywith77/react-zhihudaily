@@ -1,10 +1,12 @@
 import React from 'react'
-import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import ArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import AboutDialog from '../components/AboutDialog'
 
@@ -39,6 +41,9 @@ class Header extends React.Component {
 		super(props, context)
 		this.handleClickBtn = this.handleClickBtn.bind(this)
 	}
+	getChildContext() {
+        return { muiTheme: getMuiTheme(baseTheme) };
+    }
 	handleClickBtn() {
 		this.context.router.goBack()
 	}
@@ -59,6 +64,10 @@ class Header extends React.Component {
 		)
 	}
 }
+
+Header.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
+};
 
 Header.contextTypes = {
     router: React.PropTypes.object.isRequired

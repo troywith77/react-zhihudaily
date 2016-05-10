@@ -31,6 +31,7 @@ const initialUIState = {
 	isDialogOpen: false
 }
 const UIState = (state = initialUIState, action) => {
+	console.log(action.type)
 	switch (action.type) {
 		case 'START_LOADING':
 			return Object.assign({}, state, {
