@@ -21,6 +21,7 @@ const AppBarIconMenu = ({
   	return (
 	  <AppBar
 	    title="知乎日报"
+	    titleStyle={{textAlign: 'center'}}
 	    style={{position: 'fixed'}}
 	    iconElementLeft={<IconButton onClick={handleClick}><ArrowBack /></IconButton>}
 	    iconElementRight={
