@@ -5,7 +5,7 @@ export function convertImageUrl(url) {
 
 export function convertDetailImageUrl(url) {
 	// return url.replace(/http\w{0,1}:\/\/pic/g, "https://images.weserv.nl/?url=pic")
-	return url.replace(/http\w{0,1}:\/\//g, "http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=https://")
+	return url.replace(/http\w{0,1}:\/\/pic/g, "http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=https://pic")
 }
 
 export function reachBottom() {
