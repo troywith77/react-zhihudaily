@@ -10,6 +10,7 @@ injectTapEventPlugin()
 
 ReactDOM.render(
 	<Provider store={store}>
-	{route}
-	</Provider>
-	, document.getElementById('app'))
+		{route}
+	</Provider>,
+	document.getElementById('app')
+)

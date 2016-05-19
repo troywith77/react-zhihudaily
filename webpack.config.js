@@ -9,8 +9,16 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=react,presets[]=es2015'},
-			{test: /.scss$/, exclude: /node_modules/, loader: 'style!css!sass'}
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel'
+			},
+			{
+				test: /.scss$/,
+				exclude: /node_modules/,
+				loader: 'style!css!sass'
+			}
 		]
 	},
 	// proxy
