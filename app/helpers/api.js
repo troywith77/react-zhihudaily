@@ -26,3 +26,12 @@ export function getDetail(id) {
 	})
 }
 
+export function getThemesList() {
+	return axios({
+		method: 'GET',
+		url: '/api/themesList'
+	}).then(function(data) {
+		return data.data
+	})
+}
+

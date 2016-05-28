@@ -12,6 +12,15 @@ const mainList = (state = [], action) => {
 	}
 }
 
+const themesList = ( state = [], action) => {
+	switch(action.type) {
+		case 'LOAD_THEMES_LIST':
+			return action.list
+		default:
+			return state
+	}
+}
+
 const detail = (state = {}, action) => {
 	switch(action.type) {
 		case 'GET_DETAIL':
@@ -28,7 +37,8 @@ const detail = (state = {}, action) => {
 const initialUIState = {
 	LoadingDate: moment().format('YYYYMMDD'),
 	isLoading: true,
-	isDialogOpen: false
+	isDialogOpen: false,
+	isDrawerOpen: false
 }
 const UIState = (state = initialUIState, action) => {
 	switch (action.type) {
@@ -52,9 +62,17 @@ const UIState = (state = initialUIState, action) => {
 			return Object.assign({}, state, {
 				isDialogOpen: false
 			})
+		case 'OPEN_DRAWER':
+			return Object.assign({}, state, {
+				isDrawerOpen: true
+			})
+		case 'CLOSE_DRAWER':
+			return Object.assign({}, state, {
+				isDrawerOpen: false
+			})
 		default:
 			return state;
 	}
 }
 
-export { mainList, detail, UIState }
+export { mainList, detail, UIState, themesList }

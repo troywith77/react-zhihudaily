@@ -18,10 +18,12 @@ app.use(function(req, res, next) {
 var getListAPI = require('./config/api').getListAPI
 var getHistoryStoryAPI = require('./config/api').getHistoryStoryAPI
 var getDetailAPI = require('./config/api').getDetailAPI
+var getThemesListAPI = require('./config/api').getThemesListAPI
 
 app.get('/api/topStory', getListAPI)
 app.get('/api/history/*', getHistoryStoryAPI)
 app.get('/api/detail/*', getDetailAPI)
+app.get('/api/themesList', getThemesListAPI)
 
 //api end
 

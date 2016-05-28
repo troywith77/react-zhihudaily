@@ -9,7 +9,7 @@ const route = (
 	<Router history={browserHistory}>
 		<Route path='/' component={MainContainer}>
 			<IndexRoute component={StoryListContainer} />
-			<Route path='theme/:id' component={ThemesContainer} />
+			<Route path='theme/:themeId' component={ThemesContainer} />
 			<Route path='detail/:id' component={DetailContainer} />
 		</Route>
 	</Router>

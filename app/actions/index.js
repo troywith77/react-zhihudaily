@@ -1,4 +1,4 @@
-import { getLatestStory, getHistoryStory, getDetail } from '../helpers/api'
+import { getLatestStory, getHistoryStory, getDetail, getThemesList } from '../helpers/api'
 
 export const GET_LATEST_DATA = () => {
 	return ( dispatch, getStore ) => {
@@ -20,6 +20,17 @@ export const GET_HISTORY_DATA = (date) => {
 			dispatch(DECREMENT_DATE())
 			dispatch(GET_HISTORY(data.data))
 			dispatch(STOP_LOADING())
+		})
+	}
+}
+
+export const LOAD_THEMES_LIST_DATA = () => {
+	return (dispatch, getStore) => {
+		if(getStore().themesList.length > 0) {
+			return;
+		}
+		getThemesList().then(data => {
+			dispatch(LOAD_THEMES_LIST(data.data.others))
 		})
 	}
 }
@@ -86,5 +97,24 @@ export const OPEN_ABOUT_DIALOG = () => {
 export const CLOSE_ABOUT_DIALOG = () => {
 	return {
 		type: 'CLOSE_ABOUT_DIALOG'
+	}
+}
+
+export const OPEN_DRAWER = () => {
+	return {
+		type: 'OPEN_DRAWER'
+	}
+}
+
+export const CLOSE_DRAWER = () => {
+	return {
+		type: 'CLOSE_DRAWER'
+	}
+}
+
+export const LOAD_THEMES_LIST = (list) => {
+	return {
+		type: 'LOAD_THEMES_LIST',
+		list
 	}
 }

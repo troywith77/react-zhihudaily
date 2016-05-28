@@ -39,8 +39,22 @@ const getDetailAPI = (req, res) => {
 	})
 }
 
+//主题列表
+function getThemesList() {
+	return axios.get('http://news-at.zhihu.com/api/4/themes').then(function(data) {
+		return data
+	})
+}
+
+const getThemesListAPI = (req, res) => {
+	getThemesList().then(data => {
+		res.send(data)
+	})
+}
+
 module.exports = {
 	getListAPI,
 	getHistoryStoryAPI,
-	getDetailAPI
+	getDetailAPI,
+	getThemesListAPI
 }
