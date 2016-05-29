@@ -1,4 +1,4 @@
-import { getLatestStory, getHistoryStory, getDetail, getThemesList } from '../helpers/api'
+import { getLatestStory, getHistoryStory, getDetail, getThemesList, getTheme } from '../helpers/api'
 
 export const GET_LATEST_DATA = () => {
 	return ( dispatch, getStore ) => {
@@ -39,6 +39,14 @@ export const GET_DETAIL_DATA = (id) => {
 	return (dispatch => {
 		getDetail(id).then(data => {
 			dispatch(GET_DETAIL(data))
+		})
+	})
+}
+
+export const GET_THEME_DATA = (id) => {
+	return (dispatch => {
+		getTheme(id).then(data => {
+			dispatch(GET_THEME(data.data))
 		})
 	})
 }
@@ -116,5 +124,12 @@ export const LOAD_THEMES_LIST = (list) => {
 	return {
 		type: 'LOAD_THEMES_LIST',
 		list
+	}
+}
+
+export const GET_THEME = (theme) => {
+	return {
+		type: 'GET_THEME',
+		theme
 	}
 }

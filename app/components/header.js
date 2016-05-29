@@ -44,6 +44,7 @@ class Header extends React.Component {
 	constructor(props, context) {
 		super(props, context)
 		this.handleClickBtn = this.handleClickBtn.bind(this)
+		this.handleChangeThemes = this.handleChangeThemes.bind(this)
 	}
 	componentDidMount() {
 		this.props.actions.LOAD_THEMES_LIST_DATA()
@@ -53,6 +54,9 @@ class Header extends React.Component {
     }
 	handleClickBtn() {
 		this.props.actions.OPEN_DRAWER()
+	}
+	handleChangeThemes(id) {
+		this.context.router.push(`/theme/${id}`)
 	}
 	render() {
 		return (
@@ -72,6 +76,7 @@ class Header extends React.Component {
 					open={this.props.UIState.isDrawerOpen}
 					{...this.props.actions}
 					list={this.props.themesList}
+					onChangeRouter={this.handleChangeThemes}
 				/>
 			</header>
 		)

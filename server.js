@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(function(req, res, next) {
     res.set({
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json;charset=utf-8'
+        // 'Content-Type': 'application/json;charset=utf-8'
     })
     next()
 })
@@ -19,11 +19,13 @@ var getListAPI = require('./config/api').getListAPI
 var getHistoryStoryAPI = require('./config/api').getHistoryStoryAPI
 var getDetailAPI = require('./config/api').getDetailAPI
 var getThemesListAPI = require('./config/api').getThemesListAPI
+var getThemeAPI = require('./config/api').getThemeAPI
 
 app.get('/api/topStory', getListAPI)
 app.get('/api/history/*', getHistoryStoryAPI)
 app.get('/api/detail/*', getDetailAPI)
 app.get('/api/themesList', getThemesListAPI)
+app.get('/api/theme/*', getThemeAPI)
 
 //api end
 

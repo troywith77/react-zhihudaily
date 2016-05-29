@@ -16,10 +16,9 @@ export default class DrawerContainer extends React.Component {
 
   handleClose(id) {
     this.props.CLOSE_DRAWER()
-    console.log(this.context)
-    // if(id) {
-    //   this.context.router.push('/theme/' + id)
-    // }
+    if(id) {
+      this.props.onChangeRouter(id)
+    }
   }
 
   render() {

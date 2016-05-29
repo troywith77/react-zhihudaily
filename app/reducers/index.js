@@ -21,6 +21,15 @@ const themesList = ( state = [], action) => {
 	}
 }
 
+const theme = (state = {}, action) => {
+	switch(action.type) {
+		case 'GET_THEME':
+			return Object.assign({}, action.theme)
+		default:
+			return state
+	}
+}
+
 const detail = (state = {}, action) => {
 	switch(action.type) {
 		case 'GET_DETAIL':
@@ -75,4 +84,4 @@ const UIState = (state = initialUIState, action) => {
 	}
 }
 
-export { mainList, detail, UIState, themesList }
+export { mainList, detail, UIState, themesList, theme }

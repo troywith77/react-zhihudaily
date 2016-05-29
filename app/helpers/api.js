@@ -35,3 +35,13 @@ export function getThemesList() {
 	})
 }
 
+export function getTheme(id) {
+	return axios({
+		method: 'GET',
+		url: '/api/theme/',
+		params: {id}
+	}).then(function(data) {
+		return data.data
+	})
+}
+

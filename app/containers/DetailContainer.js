@@ -31,7 +31,7 @@ class DetailContainer extends React.Component {
 		(
 			<Detail title={detail.data.title}
 			HTMLContent={this.escapeHTML()}
-			bgUrl={convertImageUrl(detail.data.image)} />
+			bgUrl={detail.data.image ? convertImageUrl(detail.data.image) : ''} />
 		)
 	}
 }
