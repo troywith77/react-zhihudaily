@@ -1,17 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import {  mainList , detail, UIState, themesList, theme } from '../reducers/'
+import * as rootReducer from '../reducers'
 import thunk from 'redux-thunk'
 
-const rootReducer = combineReducers({
-	mainList,
-	detail,
-	UIState,
-	themesList,
-	theme
-})
-
 let store = createStore(
-	rootReducer,
+	combineReducers(rootReducer),
 	applyMiddleware(thunk)
 )
 
