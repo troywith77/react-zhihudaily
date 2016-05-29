@@ -45,6 +45,7 @@ class Header extends React.Component {
 		super(props, context)
 		this.handleClickBtn = this.handleClickBtn.bind(this)
 		this.handleChangeThemes = this.handleChangeThemes.bind(this)
+		this.handleCloseToHome = this.handleCloseToHome.bind(this)
 	}
 	componentDidMount() {
 		this.props.actions.LOAD_THEMES_LIST_DATA()
@@ -57,6 +58,9 @@ class Header extends React.Component {
 	}
 	handleChangeThemes(id) {
 		this.context.router.push(`/theme/${id}`)
+	}
+	handleCloseToHome() {
+		this.context.router.push(`/`)
 	}
 	render() {
 		return (
@@ -77,6 +81,7 @@ class Header extends React.Component {
 					{...this.props.actions}
 					list={this.props.themesList}
 					onChangeRouter={this.handleChangeThemes}
+					handleCloseToHome={this.handleCloseToHome}
 				/>
 			</header>
 		)

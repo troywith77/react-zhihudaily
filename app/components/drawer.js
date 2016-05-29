@@ -8,6 +8,7 @@ export default class DrawerContainer extends React.Component {
     super(props, context);
     this.handleToggle = this.handleToggle.bind(this)
     this.handleClose = this.handleClose.bind(this)
+    this.handleCloseToHome = this.handleCloseToHome.bind(this)
   }
 
   handleToggle(){
@@ -19,6 +20,11 @@ export default class DrawerContainer extends React.Component {
     if(id) {
       this.props.onChangeRouter(id)
     }
+  }
+
+  handleCloseToHome() {
+    this.props.CLOSE_DRAWER()
+    this.props.handleCloseToHome()
   }
 
   render() {
@@ -36,6 +42,7 @@ export default class DrawerContainer extends React.Component {
           open={this.props.open}
           onRequestChange={() => this.handleClose()}
         >
+          <MenuItem onTouchTap={this.handleCloseToHome}>首页</MenuItem>
           {themesList}
         </Drawer>
       </div>
