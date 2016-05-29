@@ -28,7 +28,7 @@ class ThemesContainer extends Component {
   	this.props.actions.GET_THEME_DATA(this.props.params.themeId)
   }
   componentWillReceiveProps(nextProp) {
-  	if(this.props.theme.name !== nextProp.theme.name) {
+  	if(this.props.params.themeId !== nextProp.params.themeId) {
   		this.props.actions.GET_THEME_DATA(nextProp.params.themeId)
   	}
   }
