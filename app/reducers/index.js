@@ -5,8 +5,7 @@ const mainList = (state = [], action) => {
 		case 'GET_LATEST':
 			return action.data.data.stories
 		case 'GET_HISTORY':
-			return [...state].concat(
-			action.data.stories);
+			return [...state, ...action.data.stories];
 		default:
 			return state;
 	}
