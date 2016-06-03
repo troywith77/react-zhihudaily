@@ -8,11 +8,20 @@ const Detail = ({
 }) => {
 	return (
 		<div className='detail-container'>
-			<img src={bgUrl} />
+			<div style={styles.image}>
+				<img src={bgUrl} />
+			</div>
 			<h2>{title}</h2>
 			<div dangerouslySetInnerHTML={HTMLContent}></div>
 		</div>
 	)
+}
+
+const styles = {
+	image: {
+		height: '300px',
+		overflow: 'hidden'
+	}
 }
 
 export default Detail
