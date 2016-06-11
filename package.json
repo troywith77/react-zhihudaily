@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot --content-base public/ --history-api-fallback",
     "prod": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress && node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js & npm start"
   },
   "keywords": [],
   "author": "唐锐",
