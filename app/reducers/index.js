@@ -46,7 +46,8 @@ const initialUIState = {
 	LoadingDate: moment().format('YYYYMMDD'),
 	isLoading: true,
 	isDialogOpen: false,
-	isDrawerOpen: false
+	isDrawerOpen: false,
+	location: null
 }
 const UIState = (state = initialUIState, action) => {
 	switch (action.type) {
@@ -77,6 +78,10 @@ const UIState = (state = initialUIState, action) => {
 		case 'CLOSE_DRAWER':
 			return Object.assign({}, state, {
 				isDrawerOpen: false
+			})
+		case 'SET_LOCATION':
+			return Object.assign({}, state, {
+				location: action.location
 			})
 		default:
 			return state;

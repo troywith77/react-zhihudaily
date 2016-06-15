@@ -133,3 +133,10 @@ export const GET_THEME = (theme) => {
 		theme
 	}
 }
+
+export const SET_LOCATION = (location) => {
+	return {
+		type: 'SET_LOCATION',
+		location
+	}
+}
