@@ -7,8 +7,7 @@ git clone
 cd
 
 //DEV
-node server  //api request (required!)
-npm start
+node run dev
 
 //PROD
 npm run prod
