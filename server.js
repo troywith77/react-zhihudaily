@@ -1,6 +1,7 @@
 var express = require('express')
 var path = require('path')
 var axios = require('axios')
+var http = require('http')
 
 var app = express()
 
@@ -26,6 +27,14 @@ app.get('/api/history/*', getHistoryStoryAPI)
 app.get('/api/detail/*', getDetailAPI)
 app.get('/api/themesList', getThemesListAPI)
 app.get('/api/theme/*', getThemeAPI)
+app.get('/api/image', function(req, res) {
+  var superagent = require('superagent');
+  var request = superagent.get(req.query.url);
+  request.pipe(res);
+  request.on('end', function(){
+      // console.log('done');
+  });
+})
 
 //api end
 
