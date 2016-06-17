@@ -28,11 +28,11 @@ app.get('/api/detail/*', getDetailAPI)
 app.get('/api/themesList', getThemesListAPI)
 app.get('/api/theme/*', getThemeAPI)
 app.get('/api/image', function(req, res) {
+  console.log(req.query.url)
   var superagent = require('superagent');
   var request = superagent.get(req.query.url);
   request.pipe(res);
   request.on('end', function(){
-      // console.log('done');
   });
 })
 
