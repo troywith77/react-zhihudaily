@@ -46,6 +46,18 @@
 		}
 	}
 }
+
+.bg-header {
+	height: 400px;
+	background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+	.bg-header {
+		height: 300px;
+	}
+}
+
 a,
 a:link,
 a:focus {

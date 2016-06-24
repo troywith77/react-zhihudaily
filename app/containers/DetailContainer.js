@@ -3,6 +3,8 @@ import Detail from '../components/detail'
 import { getDetail } from '../helpers/api'
 import { convertImageUrl, convertDetailImageUrl } from '../helpers/utils'
 
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import CircularProgress from 'material-ui/CircularProgress';
 
 import { bindActionCreators } from 'redux'
@@ -13,6 +15,9 @@ class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props)
 	}
+	getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
+  }
 	componentDidMount() {
 		this.props.actions.GET_DETAIL_DATA(this.props.params.id)
 	}
@@ -26,15 +31,17 @@ class DetailContainer extends React.Component {
 	render() {
 		const { detail } = this.props
 		return !detail.data ?
-		(<div></div>)
+		<div style={{padding: '200px'}}><CircularProgress style={{textAlign: 'center',margin: '0 auto', display: 'block'}} /></div>
 		:
-		(
-			<Detail title={detail.data.title}
-			HTMLContent={this.escapeHTML()}
-			bgUrl={detail.data.image ? convertImageUrl(detail.data.image) : ''} />
-		)
+		<Detail title={detail.data.title}
+		HTMLContent={this.escapeHTML()}
+		bgUrl={detail.data.image ? convertImageUrl(detail.data.image) : ''} />
 	}
 }
+
+DetailContainer.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => {
 	return {

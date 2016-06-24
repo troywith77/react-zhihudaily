@@ -35,8 +35,8 @@ class StoryListContainer extends React.Component {
 		*/
 	}
 	getChildContext() {
-        return { muiTheme: getMuiTheme(baseTheme) };
-    }
+    return { muiTheme: getMuiTheme(baseTheme) };
+  }
 	componentDidMount() {
 		this.props.actions.GET_LATEST_DATA()
 

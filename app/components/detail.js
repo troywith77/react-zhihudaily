@@ -8,9 +8,7 @@ const Detail = ({
 }) => {
 	return (
 		<div className='detail-container'>
-			<div style={styles.image}>
-				<img src={bgUrl} />
-			</div>
+			<header className="bg-header" style={{'backgroundImage': `url(${bgUrl})`}}></header>
 			<h2>{title}</h2>
 			<div dangerouslySetInnerHTML={HTMLContent}></div>
 		</div>
