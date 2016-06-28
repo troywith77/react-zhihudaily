@@ -1,7 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var production = process.env.NODE_ENV === 'production'
 
 module.exports = {
+	debug: !production,
+	devtool: production ? false : 'eval',
 	entry: './app/index.js',
 	output: {
 		path: path.join(__dirname, 'public/'),
@@ -21,6 +24,14 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin({
+      mangle:   true,
+      compress: {
+        warnings: false,
+      }
+    })
+	],
 	// proxy
 	devServer: {
     proxy: {
