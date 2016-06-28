@@ -2,6 +2,19 @@ var path = require('path');
 var webpack = require('webpack');
 var production = process.env.NODE_ENV === 'production'
 
+var plugins = []
+
+if(production) {
+	plugins = plugins.concat(
+		new webpack.optimize.UglifyJsPlugin({
+			mangle:   true,
+			compress: {
+				warnings: false,
+			}
+		})
+	)
+}
+
 module.exports = {
 	debug: !production,
 	devtool: production ? false : 'eval',
@@ -24,14 +37,7 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-      mangle:   true,
-      compress: {
-        warnings: false,
-      }
-    })
-	],
+	plugins: plugins,
 	// proxy
 	devServer: {
     proxy: {
