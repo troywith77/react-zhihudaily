@@ -1,11 +1,6 @@
 # React Zhihu Daily
 
-[Demo](http://115.159.44.40:3000/)
-
 ```
-git clone
-cd
-
 //DEV
 node run dev
 
