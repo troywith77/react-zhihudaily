@@ -1,7 +1,7 @@
 import React from 'react'
 import Detail from '../components/detail'
 import { getDetail } from '../helpers/api'
-import { convertImageUrl, convertDetailImageUrl } from '../helpers/utils'
+import { convertImageUrl } from '../helpers/utils'
 
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -25,8 +25,15 @@ class DetailContainer extends React.Component {
 		this.props.actions.EMPTY_DETAIL()
 	}
 	escapeHTML() {
-		let content = convertDetailImageUrl(this.props.detail.data ? this.props.detail.data.body : '')
-		return {__html: content}
+		if(this.props.detail.data) {
+			const div = document.createElement('div')
+			div.innerHTML = this.props.detail.data.body
+			const imgs = div.querySelectorAll('img')
+			for(var i = 0; i < imgs.length; i++) {
+				imgs[i].setAttribute('src', convertImageUrl(imgs[i].getAttribute('src')))
+			}
+			return {__html: div.innerHTML}
+		}
 	}
 	render() {
 		const { detail } = this.props
