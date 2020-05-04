@@ -13,7 +13,7 @@
   "author": "唐锐",
   "license": "ISC",
   "devDependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.19.2",
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.0.0",
